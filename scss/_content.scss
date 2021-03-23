@@ -1,0 +1,346 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;  
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+    display: block;
+}
+body {
+    line-height: 1;
+}
+ol, ul {
+    list-style: none;
+}
+blockquote, q {
+    quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+@font-face {
+    font-family: 'latobold';
+    src: url('../fonts/lato-bol-webfont.eot');
+    src: url('../fonts/lato-bol-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lato-bol-webfont.woff') format('woff'),
+         url('../fonts/lato-bol-webfont.ttf') format('truetype'),
+         url('../fonts/lato-bol-webfont.svg#latobold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'latolight';
+    src: url('../fonts/lato-lig-webfont.eot');
+    src: url('../fonts/lato-lig-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lato-lig-webfont.woff') format('woff'),
+         url('../fonts/lato-lig-webfont.ttf') format('truetype'),
+         url('../fonts/lato-lig-webfont.svg#latolight') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'latoregular';
+    src: url('../fonts/lato-reg-webfont.eot');
+    src: url('../fonts/lato-reg-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/lato-reg-webfont.woff') format('woff'),
+         url('../fonts/lato-reg-webfont.ttf') format('truetype'),
+         url('../fonts/lato-reg-webfont.svg#latoregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background: $bgColor;
+    font-family: 'latolight';
+}
+
+.container {
+    width: 960px;
+    margin: 20px auto;
+    min-height: 400px;
+    background: $secondaryColor;
+    border-radius: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+    overflow: hidden;
+    @include respond-to(phones) {
+        width: 90%;
+        overflow: hidden;
+    }
+
+    .to-do-list-container,
+    .timer-container {
+        position: relative;
+        width: 50%;
+        float: left;
+        @include respond-to(phones) {
+            width: 100%;
+        }
+
+        .timer-clock {
+            display: block;
+            margin: 0 auto;
+        }
+
+        .timer-clock-text {
+            width: 100%;
+            position: absolute;
+            left: 50%;
+            color: $primaryColor;
+            position: absolute;
+            font: 80px/100px 'latolight';
+            text-align: center;
+            @include vertical-align;
+            top: 44%;
+        }
+
+        .to-do-list-content {
+            li {
+                font-family: 'latolight';
+                width: 100%;
+                height: 40px;
+                line-height: 40px;
+                border-top: 1px solid $lightGrey;
+                padding: 0 10px 0 40px;
+                outline: none;
+                font-size: 20px;
+                float: left;
+                box-sizing: border-box;
+                border: 0 none;
+                background: $white;
+                border-top: 1px solid $secondaryColor;
+                position: relative;
+                @include placeholder {
+                    font-family: 'latolight';
+               }
+
+               @include respond-to(phones) {
+                    height: 40px;
+                    font-size: 24px;
+                    line-height: 40px;
+               }
+
+               &.ui-sortable-helper {
+                    -webkit-transform: rotate(1deg);
+                    transform: rotate(1deg);
+                    border-bottom: 1px solid $darkGrey;
+                }
+           }
+
+           .to-do-task-done {
+                color: $darkGrey;
+                text-decoration: line-through;
+
+                .fa-play {
+                    color: $darkGrey;
+                }
+           }
+        }
+
+        .pomodoro-count {
+            width: 22px;
+            height: 22px;
+            border-radius: 100%;
+            float: right;
+            background: #fff;
+            line-height: 22px;
+            font-size: 12px;
+            border: 1px solid $darkGrey;
+            position: relative;
+            top: 8px;
+            margin: 0 10px;
+            text-align: center;
+            color: $primaryColor;
+        }
+    }
+
+    .new-task-input {
+        font-family: 'latolight';
+        width: 100%;
+        height: 60px;
+        padding: 0 10px;
+        outline: none;
+        font-size: 20px;
+        float: left;
+        box-sizing: border-box;
+        padding: 0 10px;
+        border: 0 none;
+        @include placeholder {
+            font-family: 'latolight';
+       }
+    }
+
+    .timer-setting-container {
+        display: inline-block;
+
+        &span {
+            float: left;
+        }
+    }
+
+    .timer-short-break {
+        margin: 0;
+        border: 1px solid $darkGrey;
+        width: 100px;
+        height: 33px;
+        border-radius: 3px;
+        background-color: transparent;
+        outline: none;
+        overflow: hidden;
+        position: relative;
+        line-height: 33px;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    .break-on {
+        background: $primaryColor;
+        color: $white;
+    }
+
+    .timer-setting {
+        padding: 0;
+        margin: 0;
+        border: 1px solid $darkGrey;
+        width: 100px;
+        border-radius: 3px;
+        overflow: hidden;
+        position: relative;
+
+        &:after {
+            content: "";
+            width: 0;
+            height: 0;
+            border-top: 6px solid $primaryColor;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            position: absolute;
+            right: 8px;
+            top: 14px;
+        }
+
+        select {
+            padding: 8px;
+            width: 100px;
+            border: none;
+            box-shadow: none;
+            background-color: transparent;
+            background-image: none;
+            outline: none;
+            -webkit-appearance: none;
+               -moz-appearance: none;
+                    appearance: none;
+        }
+    }
+
+    .timer-clock-break {
+        width: 100%;
+        text-align: center;
+
+        .timer-clock-reset {
+            font-size: 14px;
+            padding: 10px;
+            position: absolute;
+            top: 59%;
+            left: 45%;
+            color: $primaryColorHover;
+            cursor: pointer;
+        }
+    }
+}
+
+.hidden {
+    display: none;
+}
+
+input[type="checkbox"] {
+    position: absolute;
+    left: -9999px;
+
+    +label {
+        float: right;
+        margin: 10px 10px 0 5px;
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        margin: 0 10px 0 0;
+
+        &:before,
+        &:after {
+            content:'';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            border-radius: 100%;
+        }
+
+        &:before {
+            display: block;
+            width: 20px;
+            height: 20px;
+            border: 1px solid $primaryColor;
+        }
+
+        &:after {
+            display: none;
+            cursor: pointer;
+            width: 16px;
+            height: 16px;
+            background: $primaryColor;
+            transform: translate(3px, 3px);
+        }
+    }
+}
+
+input[type="checkbox"]:checked {
+    +label {
+        &:after {
+            display: block;
+        }
+    }
+}
+
+.fa.fa-play,
+.fa.fa-pause,
+.fa.fa-times,
+.fa.fa-volume-up,
+.fa.fa-volume-off {
+    color: $primaryColor;
+    float: right;
+    line-height: 40px;
+    cursor: pointer;
+}
+
+.fa.fa-times {
+    font-size: 14px;
+    color: $darkGrey;
+}

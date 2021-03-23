@@ -1,0 +1,55 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <title>PomodoroJ</title>
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/font-awesome.css">
+    </head>
+    <body onload = "drawTheList();">
+        <div class="container">
+            <div class="to-do-list-container">
+                <input type="text" class="new-task-input" id="new-task" placeholder="What do you need to do?">
+                <ul class="to-do-list-content" id="to-do-list"></ul>
+            </div>
+            <div class="hidden">
+                <span class="pomodoro-count" id="pomodoro-count">0</span>
+            </div>
+            <div class="timer-container">
+                <div class="timer-sound">
+                    <audio id="timer-sound-tick">
+                        <source src="asset/tick.ogg" type="audio/ogg"></source>
+                    </audio>
+                    <i class="fa fa-volume-off fa-volume-up" id="fa-volume-up"></i>
+                    <audio id="timer-sound-end">
+                        <source src="asset/ring.ogg" type="audio/ogg"></source>
+                    </audio>
+                </div>
+                <canvas width = "300px"height = "300px" class="timer-clock" id="timer-clock"></canvas>
+                <div class="timer-clock-text" id="timer-clock-text"></div>
+                <div class="timer-clock-break">
+                    <div class="timer-setting-container">
+                        <span>Pomodoro time</span>
+                        <div class="timer-setting">
+                            <select name="" id="timer-pomodoro">
+                                <option value="1500" selected>25 min</option>
+                                <option value="1200">20 min</option>
+                                <option value="900">15 min</option>
+                                <option value="5">5 sec</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="timer-setting-container">
+                        <span>Short break</span>
+                        <div class="timer-short-break" data-break = "300">5 min</div>
+                    </div>
+                    <div class="timer-clock-reset" id="timer-clock-reset">Reset</div>
+                </div>
+            </div>
+        </div>
+        <script src="js/library/jquery-1.11.3.min.js"></script>
+        <script src="js/library/jquery-ui-1.10.4.custom.min.js"></script>
+        <script src="js/counter.js"></script>
+        <script src="js/counterjQuery.js"></script>
+    </body>
+</html>
